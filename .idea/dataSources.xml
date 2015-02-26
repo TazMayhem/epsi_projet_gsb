@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3192677016">
-    <data-source source="LOCAL" name="MySQL - epsi_projet_gsb@localhost" uuid="cc5e35b2-c3f4-449b-9be0-c5fd7059eb0b">
+  <component name="DataSourceManagerImpl" format="xml" hash="974244134">
+    <data-source source="LOCAL" name="MySQL - test@localhost" uuid="d5d8539c-d460-4e98-be6f-c986dab1b4ac">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/epsi_projet_gsb</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/test</jdbc-url>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />

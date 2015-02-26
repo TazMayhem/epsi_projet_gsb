@@ -1,34 +1,17 @@
-<?php
-/** 
- * Contient la division pour le sommaire, sujet à des variations suivant la 
- * connexion ou non d'un utilisateur, et dans l'avenir, suivant le type de cet utilisateur 
- * @todo  RAS
- */
-
-?>
-    <!-- Division pour le sommaire -->
-    <div id="menuGauche">
+  <?php      
+      if(isset($_SESSION['nom'])) {
+  ?>
+<div id="menuGauche">
      <div id="infosUtil">
-    <?php      
-      if (estVisiteurConnecte() ) {
-          $idUser = obtenirIdUserConnecte() ;
-          $lgUser = obtenirDetailVisiteur($idConnexion, $idUser);
-          $nom = $lgUser['nom'];
-          $prenom = $lgUser['prenom'];            
-    ?>
         <h2>
-    <?php  
-            echo $nom . " " . $prenom ;
-    ?>
+        <?php 
+            echo $_SESSION['nom'].' '.$_SESSION['prenom'];
+        ?>
         </h2>
         <h3>Visiteur médical</h3>        
-    <?php
-       }
-    ?>  
+  
       </div>  
-<?php      
-  if (estVisiteurConnecte() ) {
-?>
+
         <ul id="menuList">
            <li class="smenu">
               <a href="cAccueil.php" title="Page d'accueil">Accueil</a>
@@ -43,12 +26,12 @@
               <a href="cConsultFichesFrais.php" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
            </li>
          </ul>
-        <?php
-          // affichage des éventuelles erreurs déjà détectées
-          if ( lireNbErreurs($tabErreurs) > 0 ) {
-              echo toStringErreurs($tabErreurs) ;
-          }
-  }
-        ?>
+      
+
     </div>
-    
+<?php 
+  }
+  else {
+    header('Location:cSeConnecter.php');
+  }
+?>

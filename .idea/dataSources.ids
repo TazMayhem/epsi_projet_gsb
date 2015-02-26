@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - epsi_projet_gsb@localhost" uuid="cc5e35b2-c3f4-449b-9be0-c5fd7059eb0b">
-    <database-info product="MySQL" version="5.5.40-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+  <data-source name="MySQL - test@localhost" uuid="d5d8539c-d460-4e98-be6f-c986dab1b4ac">
+    <database-info product="MySQL" version="5.6.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
-    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
-    <schema name="" catalog="epsi_projet_gsb"/>
-    <table name="Etat" schema="" catalog="epsi_projet_gsb" type="TABLE">
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="test"/>
+    <table name="etat" schema="" catalog="test" type="TABLE">
       <column name="id" sqlType="CHAR" precision="2" scale="0" nullable="false" jdbcType="1"/>
       <column name="libelle" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="FicheFrais_ibfk_1" table="FicheFrais" schema="" catalog="epsi_projet_gsb" columns="idEtat"/>
+      <exported-key name="fichefrais_ibfk_1" table="fichefrais" schema="" catalog="test" columns="idEtat"/>
     </table>
-    <table name="FicheFrais" schema="" catalog="epsi_projet_gsb" type="TABLE">
+    <table name="fichefrais" schema="" catalog="test" type="TABLE">
       <column name="idVisiteur" sqlType="CHAR" precision="4" scale="0" nullable="false" jdbcType="1"/>
       <column name="mois" sqlType="CHAR" precision="6" scale="0" nullable="false" jdbcType="1"/>
       <column name="nbJustificatifs" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
@@ -21,28 +21,28 @@
       <column name="dateModif" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="idEtat" sqlType="CHAR" precision="2" scale="0" nullable="true" jdbcType="1" def="J0NSJw=="/>
       <primary-key name="PRIMARY" columns="idVisiteur,mois"/>
-      <foreign-key name="FicheFrais_ibfk_1" columns="idEtat" ref-table="Etat" ref-schema="" ref-catalog="epsi_projet_gsb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="FicheFrais_ibfk_2" columns="idVisiteur" ref-table="Visiteur" ref-schema="" ref-catalog="epsi_projet_gsb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="LigneFraisForfait_ibfk_1" table="LigneFraisForfait" schema="" catalog="epsi_projet_gsb" columns="idVisiteur,mois"/>
-      <exported-key name="LigneFraisHorsForfait_ibfk_1" table="LigneFraisHorsForfait" schema="" catalog="epsi_projet_gsb" columns="idVisiteur,mois"/>
+      <foreign-key name="fichefrais_ibfk_1" columns="idEtat" ref-table="etat" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fichefrais_ibfk_2" columns="idVisiteur" ref-table="visiteur" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="lignefraisforfait_ibfk_1" table="lignefraisforfait" schema="" catalog="test" columns="idVisiteur,mois"/>
+      <exported-key name="lignefraishorsforfait_ibfk_1" table="lignefraishorsforfait" schema="" catalog="test" columns="idVisiteur,mois"/>
     </table>
-    <table name="FraisForfait" schema="" catalog="epsi_projet_gsb" type="TABLE">
+    <table name="fraisforfait" schema="" catalog="test" type="TABLE">
       <column name="id" sqlType="CHAR" precision="3" scale="0" nullable="false" jdbcType="1"/>
       <column name="libelle" sqlType="CHAR" precision="20" scale="0" nullable="true" jdbcType="1"/>
       <column name="montant" sqlType="DECIMAL" precision="5" scale="2" nullable="true" jdbcType="3"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="LigneFraisForfait_ibfk_2" table="LigneFraisForfait" schema="" catalog="epsi_projet_gsb" columns="idFraisForfait"/>
+      <exported-key name="lignefraisforfait_ibfk_2" table="lignefraisforfait" schema="" catalog="test" columns="idFraisForfait"/>
     </table>
-    <table name="LigneFraisForfait" schema="" catalog="epsi_projet_gsb" type="TABLE">
+    <table name="lignefraisforfait" schema="" catalog="test" type="TABLE">
       <column name="idVisiteur" sqlType="CHAR" precision="4" scale="0" nullable="false" jdbcType="1"/>
       <column name="mois" sqlType="CHAR" precision="6" scale="0" nullable="false" jdbcType="1"/>
       <column name="idFraisForfait" sqlType="CHAR" precision="3" scale="0" nullable="false" jdbcType="1"/>
       <column name="quantite" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="idVisiteur,mois,idFraisForfait"/>
-      <foreign-key name="LigneFraisForfait_ibfk_1" columns="idVisiteur,mois" ref-table="FicheFrais" ref-schema="" ref-catalog="epsi_projet_gsb" ref-columns="idVisiteur,mois" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="LigneFraisForfait_ibfk_2" columns="idFraisForfait" ref-table="FraisForfait" ref-schema="" ref-catalog="epsi_projet_gsb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="lignefraisforfait_ibfk_1" columns="idVisiteur,mois" ref-table="fichefrais" ref-schema="" ref-catalog="test" ref-columns="idVisiteur,mois" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="lignefraisforfait_ibfk_2" columns="idFraisForfait" ref-table="fraisforfait" ref-schema="" ref-catalog="test" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
-    <table name="LigneFraisHorsForfait" schema="" catalog="epsi_projet_gsb" type="TABLE">
+    <table name="lignefraishorsforfait" schema="" catalog="test" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="idVisiteur" sqlType="CHAR" precision="4" scale="0" nullable="false" jdbcType="1"/>
       <column name="mois" sqlType="CHAR" precision="6" scale="0" nullable="false" jdbcType="1"/>
@@ -50,10 +50,10 @@
       <column name="date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="montant" sqlType="DECIMAL" precision="10" scale="2" nullable="true" jdbcType="3"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="LigneFraisHorsForfait_ibfk_1" columns="idVisiteur,mois" ref-table="FicheFrais" ref-schema="" ref-catalog="epsi_projet_gsb" ref-columns="idVisiteur,mois" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="lignefraishorsforfait_ibfk_1" columns="idVisiteur,mois" ref-table="fichefrais" ref-schema="" ref-catalog="test" ref-columns="idVisiteur,mois" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="idVisiteur" unique="false" columns="idVisiteur,mois"/>
     </table>
-    <table name="Visiteur" schema="" catalog="epsi_projet_gsb" type="TABLE">
+    <table name="visiteur" schema="" catalog="test" type="TABLE">
       <column name="id" sqlType="CHAR" precision="4" scale="0" nullable="false" jdbcType="1"/>
       <column name="nom" sqlType="CHAR" precision="30" scale="0" nullable="true" jdbcType="1"/>
       <column name="prenom" sqlType="CHAR" precision="30" scale="0" nullable="true" jdbcType="1"/>
@@ -64,7 +64,7 @@
       <column name="ville" sqlType="CHAR" precision="30" scale="0" nullable="true" jdbcType="1"/>
       <column name="dateEmbauche" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="FicheFrais_ibfk_2" table="FicheFrais" schema="" catalog="epsi_projet_gsb" columns="idVisiteur"/>
+      <exported-key name="fichefrais_ibfk_2" table="fichefrais" schema="" catalog="test" columns="idVisiteur"/>
     </table>
   </data-source>
 </component>
