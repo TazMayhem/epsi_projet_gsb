@@ -2,19 +2,19 @@
 <head>
 	<title>Gestion des frais de visite</title>
 	<style type="text/css">
-		<!-- body {background-color: white; color:5599EE; } 
-			.titre { width : 180 ;  clear:left; float:left; } 
-			.zone { float : left; color:7091BB } -->
+		<!-- body {background-color: white; color:#5599EE; }
+			.titre { width : 180px ;  clear:left; float:left; }
+			.zone { float : left; color:#7091BB } -->
 	</style>
 	<script language="javascript">
-        function ajoutLigne( pNumero){//ajoute une ligne de produits/qté à la div "lignes"     
+        function ajoutLigne( pNumero){//ajoute une ligne de produits/qtÃ© Ã© la div "lignes"
 			//masque le bouton en cours
 			document.getElementById("but"+pNumero).setAttribute("hidden","true");	
-			pNumero++;										//incrémente le numéro de ligne
-            var laDiv=document.getElementById("lignes");	//récupère l'objet DOM qui contient les données
-			var titre = document.createElement("label") ;	//crée un label
-			laDiv.appendChild(titre) ;						//l'ajoute à la DIV
-			titre.setAttribute("class","titre") ;			//définit les propriétés
+			pNumero++;										//incrÃ©mente le numÃ©ro de ligne
+            var laDiv=document.getElementById("lignes");	//rÃ©cupÃ©re l'objet DOM qui contient les donnÃ©es
+			var titre = document.createElement("label") ;	//crÃ©e un label
+			laDiv.appendChild(titre) ;						//l'ajoute Ã© la DIV
+			titre.setAttribute("class","titre") ;			//dÃ©finit les propriÃ©tÃ©s
 			titre.innerHTML= "   "+ pNumero + " : ";
 			//zone our la date du frais
 			var ladate = document.createElement("input");
@@ -23,7 +23,7 @@
 			ladate.setAttribute("size","12"); 
 			ladate.setAttribute("class","zone");
 			ladate.setAttribute("type","text");	
-			//zone de saisie pour un nouveau libellé			
+			//zone de saisie pour un nouveau libellÃ©
 			var libelle = document.createElement("input");
 			laDiv.appendChild(libelle);
 			libelle.setAttribute("name","FRA_AUT_LIB"+pNumero);
@@ -39,7 +39,7 @@
 			mont.setAttribute("type","text");			
 			var bouton = document.createElement("input");
 			laDiv.appendChild(bouton);
-			//ajoute une gestion évenementielle en faisant évoluer le numéro de la ligne
+			//ajoute une gestion Ã©venementielle en faisant Ã©voluer le numÃ©ro de la ligne
 			bouton.setAttribute("onClick","ajoutLigne("+ pNumero +");");
 			bouton.setAttribute("type","button");
 			bouton.setAttribute("value","+");
@@ -47,8 +47,6 @@
 			bouton.setAttribute("id","but"+ pNumero);				
         }
     </script>
-	<script>
-	</script
 </head>
 <body>
 <div name="gauche" style="clear:left:;float:left;width:18%; background-color:white; height:100%;">
@@ -57,30 +55,30 @@
 	<h2>Outils</h2>
 	<ul><li>Frais</li>
 		<ul>
-			<li><a href="formSaisieFrais.htm" >Nouveau</a></li>
-			<li><a href="formConsultFrais.htm">Consulter</a></li>
+			<li><a href="formSaisieFrais.html" >Nouveau</a></li>
+			<li><a href="formConsultFrais.html">Consulter</a></li>
 		</ul>
 	</ul>
 </div>
 </div>
 <div name="droite" style="float:left;width:80%;">
-	<div name="haut" style="margin: 2 2 2 2 ;height:10%;float:left;"><h1>Gestion des Frais</h1></div>	
-	<div name="bas" style="margin : 10 2 2 2;clear:left;background-color:77AADD;color:white;height:88%;">
+	<div name="haut" style="margin: 2px ;height:10%;float:left;"><h1>Gestion des Frais</h1></div>
+	<div name="bas" style="margin : 10px 2px 2px 2px;clear:left;background-color:#77AADD;color:white;height:88%;">
 	<form name="formSaisieFrais" method="post" action="enregSaisieFrais.php">
 		<h1> Saisie </h1>
 		<label class="titre">PERIODE D'ENGAGEMENT :</label>
 			<label style="float:left;">Mois (2 chiffres) : </label><input type="text" size="4" name="FRA_MOIS" class="zone" />
-			<label style="float:left;">&nbsp;Année (4 chiffres) : </label><input type="text" size="4" name="FRA_AN" class="zone" />
+			<label style="float:left;">&nbsp;AnnÃ©e (4 chiffres) : </label><input type="text" size="4" name="FRA_AN" class="zone" />
 		<p class="titre" /><div style="clear:left;"><h2>Frais au forfait</h2></div>
 		<label class="titre">Repas midi :</label><input type="text" size="2" name="FRA_REPAS" class="zone" />
-		<label class="titre">Nuitées :</label><input type="text" size="2" name="FRA_NUIT" class="zone" />
+		<label class="titre">NuitÃ©es :</label><input type="text" size="2" name="FRA_NUIT" class="zone" />
 		<label class="titre">Etape :</label><input type="text" size="5" name="FRA_ETAP" class="zone" />
 		<label class="titre">Km :</label><input type="text" size="5" name="FRA_KM" class="zone" />
 		<p class="titre" /><div style="clear:left;"><h2>Hors Forfait</h2></div>
 		<div style="clear:left;">			
-			<div style="margin-left:180;float:left;width:90;text-align:center;">Date</div>
-			<div style="float:left;width:220;text-align:center;">Libellé</div>
-			<div style="float:left;width:30;text-align:center;">Montant</div>
+			<div style="margin-left:180px;float:left;width:90px;text-align:center;">Date</div>
+			<div style="float:left;width:220px;text-align:center;">LibellÃ©</div>
+			<div style="float:left;width:30px;text-align:center;">Montant</div>
 		</div>
 		<div style="clear:left;" id="lignes">
 			<label class="titre" > 1 : </label>

@@ -19,5 +19,4 @@
 		//Affichage des erreurs 
    	echo "Erreur ! : " . $erreur->getMessage() . "<br/>";
    	die();
-}	
-?>
+}

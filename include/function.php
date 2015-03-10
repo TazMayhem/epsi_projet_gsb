@@ -167,4 +167,3 @@ function ajouterforfait($pdo){
 
      header('Location: cSaisieFicheFrais.php?type=forf');
 }
-?>

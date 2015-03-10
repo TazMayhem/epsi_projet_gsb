@@ -9,7 +9,7 @@
 	$req->execute(array('pseudo' => $login,'pass' => $mdp));
 	$resultat = $req->fetch();
 		if (!$resultat) {
-	   	$erreur = '<center><font color="red">Mauvais identifiant ou mot de passe !</center></font>';
+	   	$erreur = '<div style="text-align: center;color: red">Mauvais identifiant ou mot de passe !</div>';
 	    }
 		else {
 			session_start();

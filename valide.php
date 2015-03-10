@@ -90,7 +90,7 @@ $req = $pdo->query("SELECT * FROM lignefraishorsforfait WHERE `idVisiteur`='$id'
 		</table>		
 		<div class="titre" style="margin-top:20px" >Nb Justificatifs</div><input type="text" class="zone"name="hcMontant"/>		
 
-		<center><p class="titre" /><label class="titre">&nbsp;</label><input class="zone"type="reset" /><input class="zone"type="submit" name="ok" /></center>
+		<div style="text-align: center;"><p class="titre" /><label class="titre">&nbsp;</label><input class="zone"type="reset" /><input class="zone"type="submit" name="ok" /></div>
 	</form>
 
 </div>
