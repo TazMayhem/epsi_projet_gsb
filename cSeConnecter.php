@@ -1,48 +1,36 @@
-<?php  
-/** 
- * Script de contrôle et d'affichage du cas d'utilisation "Se connecter"
- * @package default
- * @todo  RAS
- */
-  $repInclude = './include/';
-  require($repInclude."_init.inc.php");
-  
-  // est-on au 1er appel du programme ou non ?
-  $etape=(count($_POST)!=0)?'validerConnexion' : 'demanderConnexion';
-  
-  if ($etape=='validerConnexion') { // un client demande à s'authentifier
-      // acquisition des données envoyées, ici login et mot de passe
-      $login = lireDonneePost("txtLogin");
-      $mdp = lireDonneePost("txtMdp");   
-      $lgUser = verifierInfosConnexion($idConnexion, $login, $mdp) ;
-      // si l'id utilisateur a été trouvé, donc informations fournies sous forme de tableau
-      if ( is_array($lgUser) ) { 
-          affecterInfosConnecte($lgUser["id"], $lgUser["login"]);
-      }
-      else {
-          ajouterErreur($tabErreurs, "Pseudo et/ou mot de passe incorrects");
-      }
-  }
-  if ( $etape == "validerConnexion" && lireNbErreurs($tabErreurs) == 0 ) {
-        header("Location:cAccueil.php");
-  }
+<?php 
+	require('include/_entete.inc.php');
 
-  require($repInclude."_entete.inc.html");
-  require($repInclude."_sommaire.inc.php");
-  
+	if(isset($_POST['cmd'])){
+		$login = $_POST['txtLogin'];
+		$mdp = $_POST['txtMdp'];
+
+	$req = $pdo->prepare('SELECT * FROM visiteur WHERE login = :pseudo AND mdp = :pass');
+	$req->execute(array('pseudo' => $login,'pass' => $mdp));
+	$resultat = $req->fetch();
+		if (!$resultat) {
+	   	$erreur = '<center><font color="red">Mauvais identifiant ou mot de passe !</center></font>';
+	    }
+		else {
+			session_start();
+		    $requete=$pdo->query("SELECT * FROM visiteur WHERE login ='$login'");
+		    $tache=$requete->fetch(); 
+		    $_SESSION['nom']=$tache['nom'];
+		    $_SESSION['id']=$tache['id'];
+		    $_SESSION['rank']=$tache['rank'];
+		    $_SESSION['prenom']=$tache['prenom'];
+		    $_SESSION['pseudo']=$tache['login'];
+		    header('Location: cAccueil.php');
+		}
+	}
 ?>
-<!-- Division pour le contenu principal -->
-    <div id="contenu">
+
+	<div id="contenu">
       <h2>Identification utilisateur</h2>
-<?php
-          if ( $etape == "validerConnexion" ) 
-          {
-              if ( lireNbErreurs($tabErreurs) > 0 ) 
-              {
-                echo toStringErreurs($tabErreurs);
-              }
-          }
-?>               
+	      <?php if(isset($erreur)) {
+	      		echo $erreur;
+	      }
+	      ?>
       <form id="frmConnexion" action="" method="post" name="frm">
       <div class="corpsForm">
         <input type="hidden" name="hd" id="etape" value="validerConnexion" />
@@ -63,7 +51,7 @@
       </div>
       </form>
     </div>
-<?php
-    require($repInclude."_pied.inc.html");
-    require($repInclude."_fin.inc.php");
+
+<?php 
+	require('include/_pied.inc.html');
 ?>
