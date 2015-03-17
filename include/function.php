@@ -48,6 +48,7 @@ function forfaitises($pdo){
                     value="'.$quantite.'" />
             </p>';
               }
+             
             }
                           else {
                             echo '<form action="" method="post"><input type="submit" value="Ajouter les nouveau champs de frais forfaitisés du mois de '.$Mois.'" size="20" name="champ" /></form>';
@@ -147,8 +148,10 @@ function supprimerligne($pdo,$num) {
 }
 
 function ajouterhorsforfait($pdo,$id,$mois,$date,$libelle,$montant){
+      header('Location:cSaisieFicheFrais.php');
       $pdo->exec("INSERT INTO LigneFraisHorsForfait(idVisiteur, mois, date, libelle, montant) 
                   VALUES ('" . $id . "','" . $mois . "','" . $date . "','" . $libelle . "'," . $montant .")");
+
 
 }
 
@@ -167,3 +170,4 @@ function ajouterforfait($pdo){
 
      header('Location: cSaisieFicheFrais.php?type=forf');
 }
+?>

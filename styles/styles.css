@@ -1,7 +1,9 @@
 /* Styles des divisions principales de la page */
 body{
     background-color: #77AADD;
-    margin:0 0;
+	background-image: url(imgs/FONDGLOBAL.jpg);
+	background-repeat: repeat-x;
+    margin:0% 0%;
     padding : 0.6em;
     font-family:"Trebuchet MS",Verdana,Geneva,Arial,Helvetica,sans-serif;
     font-size:0.8em;
@@ -18,7 +20,7 @@ body{
 	color : #980101;
 	border: solid 0.1em #980101;
 	height: 154px;
-	padding: 0;
+	padding: 0em;
 	border-collapse: separate;
 }
 #pied{
@@ -26,6 +28,7 @@ body{
 	border : solid 0.2em #980101;
 	margin-left : 18%;
 	margin-top : 1em;
+	padding:0.4em;
 	padding: 0.2em;
 	border-collapse: separate;
 }
@@ -47,34 +50,34 @@ body{
 	margin-left: 18%;
 /* permet de fixer une hauteur mini sur les navigateurs modernes */
   min-height:27em;
-/* pour obtenir le m√©me effet sur IE, sachant que si le contenu d√©passe, il
+/* pour obtenir le mÍme effet sur IE, sachant que si le contenu dÈpasse, il
 "poussera" la hauteur en ne respectant pas la norme. On se joue de ses lacunes
 */
   height:27em;
 }
 
-/* pour r√©tablir le mauvais effet sur les nav. modernes */
+/* pour rÈtablir le mauvais effet sur les nav. modernes */
 html>body #contenu{
   height:auto;
 }
 
-/* style √© appliquer √© la balise ul d'identifiant menulist */
+/* style ‡ appliquer ‡ la balise ul d'identifiant menulist */
 ul#menuList{
     list-style:none;
-    margin:0;
-    padding:0;
+    margin:0px;
+    padding:0px;
     width:98%;
     font-size: 1em;
 }
 
-/* style √© appliquer aux √©l√©ments de la balise ul d'identifiant menulist */
+/* style ‡ appliquer aux ÈlÈments de la balise ul d'identifiant menulist */
 ul#menuList li {
     position:relative;
-    margin:0;
-    padding:0;
+    margin:0px;
+    padding:0px;
 }
 
-/* apparences des liens dans listes et sous-listes non num√©rot√©es */
+/* apparences des liens dans listes et sous-listes non numÈrotÈes */
 ul#menuList a {
     color:rgb(0,85,227);
     display:block;
@@ -122,19 +125,19 @@ ul#menuList a:hover {
 .corpsForm {
   border : solid 0.1em #000;
   border-bottom-width:1px;
-  margin-bottom : 0;
+  margin-bottom : 0em;
   width : 95%;
 }
 .piedForm {
   border-bottom-width : 0.1em;
   border-left-width : 0.1em;
   border-right-width : 0.1em;
-  border-top-width : 0;
+  border-top-width : 0em;
   border-style : solid;
   border-color : #000;
   text-align:right ;
   width : 95%;
-  margin-top:0;
+  margin-top:0em;
 }
 form {
   margin-bottom:1em;  
@@ -167,7 +170,7 @@ input:hover, textarea:hover, select:hover{
 }
 
 /*  Le texte des messages d'erreur est de couleur rose sur fond ocre et de 
-taille de caract√®res l√©g√®rement sup√©rieure √† la normale */
+taille de caractËres lÈgËrement supÈrieure ‡ la normale */
 .erreur{ 
    background-color:rgb(237,210,229);
    color:rgb(203,28,128);
@@ -222,7 +225,7 @@ taille de caract√®res l√©g√®rement sup√©rieure √† la normale */
    border-collapse : collapse;
 }
 
-/* Style pour les lignes d'en-t√©te des tableaux */
+/* Style pour les lignes d'en-tÍte des tableaux */
 #contenu th {  
    background-color:#77AADD;
    height:21px;
@@ -245,7 +248,7 @@ table.listeLegere {
     margin-bottom : 0.5em;
 }
 
-/* Tableaux quadrill√©s utilis√©s pour l'affichage de listes avec contenu l√©ger*/
+/* Tableaux quadrillÈs utilisÈs pour l'affichage de listes avec contenu lÈger*/ 
 table.listeLegere th, table.listeLegere td {
   border : dotted rgb(178,207,81) 0.1em;
   padding:0.5em;

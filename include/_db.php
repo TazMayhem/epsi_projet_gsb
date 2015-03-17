@@ -4,8 +4,8 @@
 	
    $host='localhost';
    $username='root';
-   $password=';B44x1M4a:!';
-   $database='gsb_jpp';
+   $password='';
+   $database='gsb';
     
 	//Définition de la connexion PDO
 	
@@ -19,4 +19,5 @@
 		//Affichage des erreurs 
    	echo "Erreur ! : " . $erreur->getMessage() . "<br/>";
    	die();
-}
+}	
+?>

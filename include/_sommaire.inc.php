@@ -27,7 +27,7 @@
               <a href="cSaisieFicheFrais.php" title="Saisie fiche de frais du mois courant">Saisie fiche de frais</a>
            </li>
            <li class="smenu">
-              <a href="cConsultFichesFrais.php" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
+              <a href="suivie.php" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
            </li>
          </ul>
     <?php } else { ?>
@@ -44,10 +44,7 @@
               <a href="cSeDeconnecter.php" title="Se déconnecter">Se déconnecter</a>
            </li>
            <li class="smenu">
-              <a href="cSaisieFicheFrais.php" title="Saisie fiche de frais du mois courant">Saisie fiche de frais</a>
-           </li>
-           <li class="smenu">
-              <a href="cConsultFichesFrais.php" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
+              <a href="valide.php" title="Valide fiche frais">Valide fiche de frais</a>
            </li>
          </ul>
 

@@ -3,13 +3,14 @@
 
 	if(isset($_POST['cmd'])){
 		$login = $_POST['txtLogin'];
-		$mdp = $_POST['txtMdp'];
+		$mdpp = SHA1($_POST['txtMdp']);
+		$mdp = substr($mdpp, 0, -20);
 
 	$req = $pdo->prepare('SELECT * FROM visiteur WHERE login = :pseudo AND mdp = :pass');
 	$req->execute(array('pseudo' => $login,'pass' => $mdp));
 	$resultat = $req->fetch();
 		if (!$resultat) {
-	   	$erreur = '<div style="text-align: center;color: red">Mauvais identifiant ou mot de passe !</div>';
+	   	$erreur = '<center><font color="red">Mauvais identifiant ou mot de passe !</center></font>';
 	    }
 		else {
 			session_start();
