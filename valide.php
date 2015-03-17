@@ -77,7 +77,7 @@ $req = $pdo->query("SELECT * FROM lignefraishorsforfait WHERE `idVisiteur`='$id'
     	echo '<h2 style="margin-top:20px">Hors Forfait</h2><br>
 		<table style="color:white;" border="1">
 			<tr><th>Date</th><th>Libellé </th><th>Montant</th><th>Situation</th></tr>';
-     	fo²reach ($res as $fin ) {
+     	foreach ($res as $fin ) {
           $date1 = $fin["date"];
           $date = date("d/m/Y", strtotime($date1));
      			echo ' <tr align="center"><td width="100" ><input type="text" size="12" disabled value="'.$date.'" name="hfDate1"/></td>
