@@ -4,7 +4,7 @@
 	
    $host='localhost';
    $username='root';
-   $password=';B44x1M4a:!';
+   $password='';
    $database='gsb_jpp';
     
 	//Définition de la connexion PDO

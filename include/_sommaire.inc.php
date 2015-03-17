@@ -49,6 +49,9 @@
            <li class="smenu">
               <a href="cConsultFichesFrais.php" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
            </li>
+            <li class ="smenu">
+                <a href="valide.php" title="Valider une fiche de frais">Valider une fiche de frais</a>
+            </li>
          </ul>
 
     <?php } ?>
