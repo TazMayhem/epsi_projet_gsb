@@ -40,18 +40,7 @@
 			?>
 				
 			</select>
-
-	<label class="titre">Mois :</label>
-
-		<select name="date" class="zone" 
-		<?php
-		$sql1 = $pdo->query("SELECT mois FROM lignefraishorsforfait WHERE id = 2 ");
-		$req1 = $sql1->fetchAll();
-		foreach ($req1 as $key1) {
-			echo '<option value="'.$key1['id'].'">'.$key1['mois'].'</option>';
-		}
-		?>
-		/>
+	<label class="titre">Mois :</label> <input class="zone" type="text" <?php echo 'value="'.$mois = date("Ym").'"';?> name="date" size="12" />
 
 
 	

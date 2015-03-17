@@ -4,7 +4,7 @@
 	require('include/_sommaire.inc.php');
 	$visiteur = $_SESSION['id'];
 	if(isset($_GET['mois'])){
-	$_SESSION['mois'] = $mois = $_GET['mois'];
+	$mois = $_GET['mois'];
 	}
 
 	if(isset($_POST['search'])){
@@ -34,7 +34,6 @@
 				<td width="80"> <label size="3" name="dateOper" /></td>	
 				<td width="80"> <label size="3" name="dateOper" /></td>						
 			</tr>
-			
 			<?php 
 
 				$req=$pdo->query("SELECT * FROM `lignefraisforfait` WHERE `idVisiteur` = '$visiteur' AND `mois` = '$mois'");
@@ -57,9 +56,7 @@
             }else {
             	echo '<td><center><input type="text" disabled size="5"  value = "'.$key['etat'].'"/></center></td>';
             }
-			
 			?>
-			
 			<td><center><input type="text" disabled size="5"  value = "Date"/></center></td>
 			<td><center><input type="text" disabled size="15"  value = "Remboursement"/></center></td>
 		</table>
@@ -82,24 +79,11 @@
 			<?php  }?>
 		
 			
-		</tr></table>
-		
+		</tr></table>	
 		<p class="titre"></p>
 		<div class="titre">Nb Justificatifs</div><input type="text" class="zone" size="4" name="hcMontant"/>
 	<?php } ?>
-	
 </div>
-<?php if(isset($_GET['mois'])){ ?>
-<div class="encadre">
-	<form id="formGenPDF" method="post" action="include/exportPDF.php" style="float:right;">
-			<input type="hidden" name="visiteur" value="<?php echo $visiteur; ?>" />
-			<input type="hidden" name="mois" value="<?php echo $mois; ?>" />
-			<a style="cursor:pointer;" 
-			   onclick="document.getElementById('formGenPDF').submit();">Exporter au format PDF 
-			<img src="images/pdfIcon.png" style="height:16px;float:none;vertical-align:middle;" alt="icone Actualiser" /></a>
-	</form>
-</div>
-<?php } ?>
 
 <?php 
 	require('include/_pied.inc.html');
