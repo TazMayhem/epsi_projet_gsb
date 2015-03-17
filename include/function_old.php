@@ -48,15 +48,7 @@ function forfaitises($pdo){
                     value="'.$quantite.'" />
             </p>';
               }
-            echo '
-                <div>
-                    <h4>Type de véhicule utilisé pour l\'étape</h4>
-                    <input type="radio" name="TYPE_VEHIC" value="0.52" checked> 4CV Diesel<br>
-                    <input type="radio" name="TYPE_VEHIC" value="0.58"> 5/6 CV Diesel<br>
-                    <input type="radio" name="TYPE_VEHIC" value="0.62"> 4CV Essence<br>
-                    <input type="radio" name="TYPE_VEHIC" value="0.67"> 5/6 CV Essence<br>
-                </div>
-            ';
+             
             }
                           else {
                             echo '<form action="" method="post"><input type="submit" value="Ajouter les nouveau champs de frais forfaitisés du mois de '.$Mois.'" size="20" name="champ" /></form>';
@@ -66,7 +58,7 @@ function forfaitises($pdo){
                     $pdo->exec("INSERT INTO `lignefraisforfait`(`idVisiteur`, `mois`, `idFraisForfait`) VALUES  ('".$_SESSION['id']."', '".$mois."', 'KM')");
                     $pdo->exec("INSERT INTO `lignefraisforfait`(`idVisiteur`, `mois`, `idFraisForfait`) VALUES  ('".$_SESSION['id']."', '".$mois."', 'NUI')");
                     $pdo->exec("INSERT INTO `lignefraisforfait`(`idVisiteur`, `mois`, `idFraisForfait`) VALUES  ('".$_SESSION['id']."', '".$mois."', 'REP')");
-                    header( "refresh:0.1;url=cSaisieFicheFrais.php?type=forf" );
+                    header( "refresh:0.1;url=cSaisieFicheFrais.php?type=forf" ); 
             }
 
           		echo '</fieldset>
@@ -156,8 +148,10 @@ function supprimerligne($pdo,$num) {
 }
 
 function ajouterhorsforfait($pdo,$id,$mois,$date,$libelle,$montant){
+      header('Location:cSaisieFicheFrais.php');
       $pdo->exec("INSERT INTO LigneFraisHorsForfait(idVisiteur, mois, date, libelle, montant) 
                   VALUES ('" . $id . "','" . $mois . "','" . $date . "','" . $libelle . "'," . $montant .")");
+
 
 }
 
@@ -167,13 +161,13 @@ function ajouterforfait($pdo){
       $kmv = $_POST['KM'];
       $nuiv = $_POST['NUI'];
       $repv = $_POST['REP'];
-      $mois = date("Ym");
-      $typV = $_POST['TYPE_VEHIC'];
+      $mois = date("Ym"); 
 
      $pdo->exec("UPDATE `lignefraisforfait` SET `quantite`= '$etpv' WHERE idVisiteur = '$id' AND mois = '$mois' AND idFraisForfait = 'ETP'");
-     $pdo->exec("UPDATE `lignefraisforfait` SET `quantite`= '$kmv', `coeffTypeVehic`='$typV' WHERE idVisiteur = '$id' AND mois = '$mois' AND idFraisForfait = 'KM'");
+     $pdo->exec("UPDATE `lignefraisforfait` SET `quantite`= '$kmv' WHERE idVisiteur = '$id' AND mois = '$mois' AND idFraisForfait = 'KM'");
      $pdo->exec("UPDATE `lignefraisforfait` SET `quantite`= '$nuiv' WHERE idVisiteur = '$id' AND mois = '$mois' AND idFraisForfait = 'NUI'");
      $pdo->exec("UPDATE `lignefraisforfait` SET `quantite`= '$repv' WHERE idVisiteur = '$id' AND mois = '$mois' AND idFraisForfait = 'REP'");      
 
      header('Location: cSaisieFicheFrais.php?type=forf');
 }
+?>

@@ -3,6 +3,7 @@
 session_start();
 
 require('fpdf.php');
+require('_db.php');
 
 
 $visiteur = $_SESSION['id'];
@@ -27,10 +28,12 @@ class PDF extends FPDF {
 
 
 	
-	function afficheFicheFrais($visiteur, $mois)
+	function afficheFicheFrais($visiteur, $mois, $pdo)
 	{
-		$pdf ->SetXY(330, 25); 
-    $pdf ->Cell(190,50,"texte dans le cadre",0,0, "L"); 
+		$req=$pdo->query("SELECT * FROM Visiteur WHERE id='$visiteur'");
+    $res=$req->fetch();
+    echo $res['nom'];
+    
 	}
 	
 
@@ -44,29 +47,11 @@ $fichier = '../pdf/' . $visiteur . $mois . '.pdf';
 if (!file_exists($fichier)) {
     // Instanciation de la classe dérivée
     $pdf = new PDF();
-    $pdf->afficheFicheFrais($visiteur, $mois);
+    $pdf->afficheFicheFrais($visiteur, $mois, $pdo);
     $pdf->Output($fichier);
+    $pdf ->SetXY(330, 25);
+    $pdf ->Cell(190,50,"texte dans le cadre",0,0, "L"); 
 }
 
-//Paramètres de connexion
-	
-   $host='localhost';
-   $username='root';
-   $password='';
-   $database='gsb';
-    
-	//Définition de la connexion PDO
-	
-	try {
-		
-		//Connexion à la base de données
-    	$pdo=new PDO('mysql:host='.$host.';dbname='.$database.';charset=utf8',$username,$password); 
-	} 
-	catch (PDOException $erreur) {
-				
-		//Affichage des erreurs 
-   	echo "Erreur ! : " . $erreur->getMessage() . "<br/>";
-   	die();
-	}
 
 ?>
